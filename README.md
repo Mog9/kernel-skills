@@ -75,7 +75,8 @@ kernel-skills/
         ├── fuse-elementwise-ops/
         ├── write-numerically-stable-kernel/
         ├── handle-boundary-conditions/
-        └── choose-tile-size-and-work-partitioning/
+        ├── choose-tile-size-and-work-partitioning/
+        └── write-kernel-test-plan/
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -116,6 +117,7 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 | [`write-numerically-stable-kernel`](skills/patterns/write-numerically-stable-kernel/SKILL.md) | Apply Kahan summation, log-sum-exp trick, compensated accumulation, and dtype selection for stable intermediate values |
 | [`handle-boundary-conditions`](skills/patterns/handle-boundary-conditions/SKILL.md) | Handle partial tiles, misaligned sizes, and out-of-bounds accesses correctly — masked loads, predicated stores, and tail handling strategies |
 | [`choose-tile-size-and-work-partitioning`](skills/patterns/choose-tile-size-and-work-partitioning/SKILL.md) | Reason about arithmetic intensity, shared memory budget, occupancy tradeoffs, and work partitioning for irregular shapes |
+| [`write-kernel-test-plan`](skills/patterns/write-kernel-test-plan/SKILL.md) | Design a correctness and numerical test plan — reference comparison strategy, input shape sweep, dtype coverage, tolerance reasoning, and CI integration |
 
 ---
 
