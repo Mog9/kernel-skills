@@ -63,7 +63,8 @@ kernel-skills/
         ├── optimize-global-memory-access/
         ├── optimize-shared-memory-tiling/
         ├── avoid-warp-divergence/
-        └── choose-launch-configuration/
+        ├── choose-launch-configuration/
+        └── debug-cuda-kernel-correctness/
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -84,6 +85,7 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 | [`optimize-shared-memory-tiling`](skills/cuda/optimize-shared-memory-tiling/SKILL.md) | Apply shared memory tiling with bank conflict analysis, padding strategies, and double buffering |
 | [`avoid-warp-divergence`](skills/cuda/avoid-warp-divergence/SKILL.md) | Classify avoidable vs unavoidable divergence, apply ballot/shuffle fast paths and stream compaction, estimate the real cost before restructuring |
 | [`choose-launch-configuration`](skills/cuda/choose-launch-configuration/SKILL.md) | Select block size, grid size, and shared memory from occupancy analysis, register budget, and workload shape |
+| [`debug-cuda-kernel-correctness`](skills/cuda/debug-cuda-kernel-correctness/SKILL.md) | Systematic workflow for isolating indexing bugs, race conditions, reduction errors, dtype issues, and out-of-bounds accesses in CUDA kernels |
 
 ---
 
