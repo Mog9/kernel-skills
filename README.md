@@ -85,6 +85,11 @@ kernel-skills/
         ├── port-cuda-kernel-to-triton/
         ├── port-cuda-kernel-to-hip/
         └── write-backend-agnostic-kernel-plan/
+└── examples/
+    ├── how-to-use-with-claude-code.md
+    ├── how-to-use-with-chatgpt.md
+    ├── how-to-use-with-cursor.md
+    └── how-to-use-with-gemini-cli.md
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -163,6 +168,13 @@ Input shape: [B=32, N=65536]. Output: [B] row-wise sums.
 ```
 
 The skill works the same way with ChatGPT, Cursor, Gemini CLI, and any other agent that accepts context.
+
+| Agent | Guide |
+|---|---|
+| Claude Code | [examples/how-to-use-with-claude-code.md](examples/how-to-use-with-claude-code.md) |
+| ChatGPT | [examples/how-to-use-with-chatgpt.md](examples/how-to-use-with-chatgpt.md) |
+| Cursor | [examples/how-to-use-with-cursor.md](examples/how-to-use-with-cursor.md) |
+| Gemini CLI | [examples/how-to-use-with-gemini-cli.md](examples/how-to-use-with-gemini-cli.md) |
 
 ---
 
