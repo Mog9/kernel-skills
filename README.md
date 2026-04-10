@@ -71,6 +71,9 @@ kernel-skills/
         ├── write-triton-layernorm-kernel/
         ├── write-triton-attention-kernel/
         └── optimize-triton-block-parameters/
+    └── patterns/
+        ├── fuse-elementwise-ops/
+        └── write-numerically-stable-kernel/
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -102,6 +105,13 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 | [`write-triton-layernorm-kernel`](skills/triton/write-triton-layernorm-kernel/SKILL.md) | Implement LayerNorm in Triton with Welford online variance, persistent kernel pattern, and backward pass accumulation strategy |
 | [`write-triton-attention-kernel`](skills/triton/write-triton-attention-kernel/SKILL.md) | Implement Flash Attention in Triton — causal mask handling, kv-block loop structure, online softmax scaling, and fp16/bf16 accumulation decisions |
 | [`optimize-triton-block-parameters`](skills/triton/optimize-triton-block-parameters/SKILL.md) | Select BLOCK_M/N/K, num_warps, and num_stages; reason about register pressure, occupancy, and autotuning config design |
+
+### Patterns
+
+| Skill | Description |
+|---|---|
+| [`fuse-elementwise-ops`](skills/patterns/fuse-elementwise-ops/SKILL.md) | Decide when and how to fuse elementwise operations — memory bandwidth arithmetic, producer-consumer fusion, and epilogue fusion patterns |
+| [`write-numerically-stable-kernel`](skills/patterns/write-numerically-stable-kernel/SKILL.md) | Apply Kahan summation, log-sum-exp trick, compensated accumulation, and dtype selection for stable intermediate values |
 
 ---
 
