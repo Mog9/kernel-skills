@@ -1,6 +1,6 @@
 # How to Use kernel-skills with ChatGPT
 
-ChatGPT (including GPT-4o) works well with `SKILL.md` files when you paste them directly into your conversation. The skill acts as a detailed system-level instruction that shapes how ChatGPT reasons about the kernel task.
+ChatGPT works well with `SKILL.md` files when you paste them directly into your conversation. The skill acts as a detailed system-level instruction that shapes how ChatGPT reasons about the kernel task.
 
 ---
 
@@ -95,4 +95,4 @@ Classify the bug using the error classification from the skill, then find the ro
 - Ask ChatGPT to "follow the review checklist before finishing" at the end of a kernel writing task. This prevents common omissions (missing boundary handling, unsupported performance claims).
 - If ChatGPT skips the "Inputs to gather" step and goes straight to code, remind it: "The skill requires you to gather inputs first before generating code."
 - For large skills, pasting the full file is better than summarizing it. The specific rules and failure modes are what make the skill valuable — paraphrasing them loses precision.
-- Use GPT-4o rather than GPT-3.5 for kernel tasks. The quality gap is significant for technically demanding code generation.
+- Use a current strong reasoning or coding model. Kernel engineering tasks require solid code generation quality — older or smaller models produce noticeably weaker results.

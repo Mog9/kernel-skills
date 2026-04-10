@@ -117,4 +117,4 @@ Apply the shared memory tiling skill to identify memory access bottlenecks and p
 - Gemini CLI works well when the skill's "Inputs the agent should gather first" list is pre-filled. Provide all inputs (shapes, dtypes, hardware target) in the first message to avoid back-and-forth.
 - When asking Gemini to follow the review checklist: explicitly paste the checklist section at the end of your prompt and say "check each item and confirm compliance before finishing."
 - For multi-skill sessions, ordering matters: put the "write" skill before the "test plan" skill, or ask for one deliverable at a time per skill rather than requesting everything simultaneously.
-- Gemini 2.0 Pro and Ultra provide substantially better code quality than earlier versions for GPU kernel tasks. Use the largest available model for kernel engineering work.
+- Use a current strong reasoning or coding model. Kernel engineering tasks benefit significantly from a capable model — smaller or older versions produce noticeably weaker results for GPU kernel work.
