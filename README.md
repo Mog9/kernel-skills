@@ -65,6 +65,9 @@ kernel-skills/
         ├── avoid-warp-divergence/
         ├── choose-launch-configuration/
         └── debug-cuda-kernel-correctness/
+    └── triton/
+        ├── write-triton-gemm-kernel/
+        └── write-triton-softmax-kernel/
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -86,6 +89,13 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 | [`avoid-warp-divergence`](skills/cuda/avoid-warp-divergence/SKILL.md) | Classify avoidable vs unavoidable divergence, apply ballot/shuffle fast paths and stream compaction, estimate the real cost before restructuring |
 | [`choose-launch-configuration`](skills/cuda/choose-launch-configuration/SKILL.md) | Select block size, grid size, and shared memory from occupancy analysis, register budget, and workload shape |
 | [`debug-cuda-kernel-correctness`](skills/cuda/debug-cuda-kernel-correctness/SKILL.md) | Systematic workflow for isolating indexing bugs, race conditions, reduction errors, dtype issues, and out-of-bounds accesses in CUDA kernels |
+
+### Triton
+
+| Skill | Description |
+|---|---|
+| [`write-triton-gemm-kernel`](skills/triton/write-triton-gemm-kernel/SKILL.md) | Write a Triton GEMM kernel with correct block tiling, tl.dot accumulation, row/col-major loading, and when CUTLASS is preferable |
+| [`write-triton-softmax-kernel`](skills/triton/write-triton-softmax-kernel/SKILL.md) | Implement numerically stable softmax in Triton with block size selection for the reduction axis and masking for variable sequence lengths |
 
 ---
 
