@@ -73,7 +73,9 @@ kernel-skills/
         └── optimize-triton-block-parameters/
     └── patterns/
         ├── fuse-elementwise-ops/
-        └── write-numerically-stable-kernel/
+        ├── write-numerically-stable-kernel/
+        ├── handle-boundary-conditions/
+        └── choose-tile-size-and-work-partitioning/
 ```
 
 More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming next.
@@ -112,6 +114,8 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 |---|---|
 | [`fuse-elementwise-ops`](skills/patterns/fuse-elementwise-ops/SKILL.md) | Decide when and how to fuse elementwise operations — memory bandwidth arithmetic, producer-consumer fusion, and epilogue fusion patterns |
 | [`write-numerically-stable-kernel`](skills/patterns/write-numerically-stable-kernel/SKILL.md) | Apply Kahan summation, log-sum-exp trick, compensated accumulation, and dtype selection for stable intermediate values |
+| [`handle-boundary-conditions`](skills/patterns/handle-boundary-conditions/SKILL.md) | Handle partial tiles, misaligned sizes, and out-of-bounds accesses correctly — masked loads, predicated stores, and tail handling strategies |
+| [`choose-tile-size-and-work-partitioning`](skills/patterns/choose-tile-size-and-work-partitioning/SKILL.md) | Reason about arithmetic intensity, shared memory budget, occupancy tradeoffs, and work partitioning for irregular shapes |
 
 ---
 
