@@ -55,21 +55,7 @@ Stable after skill: **0/16 failures**. Bandwidth within 1.2% of `torch.softmax`.
 
 ### The two changes the skill directed
 
-```diff
-- // no max subtraction → NaN on adversarial inputs
-- float val = (tid < N) ? expf(x[tid]) : 0.0f;
--
-- // no strided loop → wrong output for N > blockDim.x
-- if (tid < N) y[tid] = val / denom;
-
-+ // FIX 1: strided loop handles arbitrary N  (skill: handle-boundary-conditions)
-+ for (int i = tid; i < N; i += blockDim.x)
-+     tmax = fmaxf(tmax, x[i]);
-+
-+ // FIX 2: subtract max before expf  (skill: write-numerically-stable-kernel)
-+ for (int i = tid; i < N; i += blockDim.x)
-+     y[i] = expf(x[i] - row_max) / row_sum;
-```
+![Code diff — before and after skill guidance](proof/cuda/softmax/code-diff.png)
 
 → [Full proof page with root-cause analysis and all charts](proof/cuda/softmax/softmax-correctness.md)
 
