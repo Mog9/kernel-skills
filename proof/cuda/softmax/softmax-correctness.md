@@ -59,6 +59,10 @@ The naive kernel failed in two independent ways. The stable kernel passed all co
 
 ![Code diff](code-diff.png)
 
+### Animated walkthrough — step-by-step from naive to stable
+
+![Skill diff walkthrough](skill-diff.gif)
+
 ---
 
 ## Root cause analysis
