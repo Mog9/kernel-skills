@@ -166,7 +166,8 @@ kernel-skills/
 │   ├── triton/
 │   ├── patterns/
 │   ├── quantization/
-│   └── portability/
+│   ├── portability/
+│   └── inference/
 ├── proof/                  # measured before/after evidence per skill
 │   ├── README.md
 │   ├── cuda/
@@ -220,6 +221,23 @@ More skills are being added. See [ROADMAP.md](ROADMAP.md) for what is coming nex
 | [`write-triton-layernorm-kernel`](skills/triton/write-triton-layernorm-kernel/SKILL.md) | Implement LayerNorm in Triton with Welford online variance, persistent kernel pattern, and backward pass accumulation strategy |
 | [`write-triton-attention-kernel`](skills/triton/write-triton-attention-kernel/SKILL.md) | Implement Flash Attention in Triton — causal mask handling, kv-block loop structure, online softmax scaling, and fp16/bf16 accumulation decisions |
 | [`optimize-triton-block-parameters`](skills/triton/optimize-triton-block-parameters/SKILL.md) | Select BLOCK_M/N/K, num_warps, and num_stages; reason about register pressure, occupancy, and autotuning config design |
+
+### Inference
+
+Skills for the LLM serving hot path — Triton kernels for the building blocks of LLaMA-family transformers, plus pattern and integration-planning skills for vLLM and TensorRT.
+
+| Skill | Description |
+|---|---|
+| [`write-triton-rmsnorm-kernel`](skills/inference/write-triton-rmsnorm-kernel/SKILL.md) | Implement RMSNorm in Triton — one-pass sum-of-squares with fp32 accumulation, persistent kernel for typical LLM hidden sizes, forward + backward correctness |
+| [`write-triton-fused-add-rmsnorm-kernel`](skills/inference/write-triton-fused-add-rmsnorm-kernel/SKILL.md) | Fuse residual-add + RMSNorm into one Triton kernel — single memory pass with the summed residual written back for the next transformer block |
+| [`write-triton-silu-mul-kernel`](skills/inference/write-triton-silu-mul-kernel/SKILL.md) | Implement `silu(a) * b` (SwiGLU) in Triton — fp32 sigmoid for stability, GeGLU/ReGLU variants, bandwidth-bound tuning |
+| [`write-triton-rope-kernel`](skills/inference/write-triton-rope-kernel/SKILL.md) | Apply Rotary Position Embeddings to Q/K — GPT-NeoX vs GPT-J layout disambiguation, continuous-batching position handling, fp32 cos/sin tables |
+| [`write-triton-sampling-kernel`](skills/inference/write-triton-sampling-kernel/SKILL.md) | Decode-time token sampling in Triton — temperature, top-k, top-p (nucleus), multinomial draw, with heterogeneous per-request sampling parameters |
+| [`write-triton-kv-cache-append-kernel`](skills/inference/write-triton-kv-cache-append-kernel/SKILL.md) | Append new K/V into the KV cache during decode — contiguous and paged (vLLM-style) layouts, GQA, fp8 KV cache scaling |
+| [`write-triton-dequant-kernel`](skills/inference/write-triton-dequant-kernel/SKILL.md) | Dequantize int4/int8 weights to fp16/bf16 — AWQ/GPTQ/NF4/int8 schemes, bit-unpacking, per-group scale/zero arithmetic, when to fuse into a matmul instead |
+| [`optimize-prefill-vs-decode-kernels`](skills/inference/optimize-prefill-vs-decode-kernels/SKILL.md) | Reason about prefill (compute-bound, large M) vs decode (memory-bound, M=1) regimes — kernel family, tile shape, split strategy, continuous batching, speculative decoding |
+| [`write-vllm-custom-op-integration-plan`](skills/inference/write-vllm-custom-op-integration-plan/SKILL.md) | Plan a custom CUDA/Triton kernel integration into vLLM — paged KV cache, CUDA graph capture, tensor parallelism, model-runner hooks, benchmark strategy |
+| [`write-tensorrt-plugin-integration-plan`](skills/inference/write-tensorrt-plugin-integration-plan/SKILL.md) | Plan a TensorRT plugin around a custom CUDA kernel — IPluginV3 vs IPluginV2 choice, plugin lifecycle, dynamic shapes, serialization, FP16/INT8/FP8 |
 
 ### Patterns
 
